@@ -19,6 +19,8 @@ if model_selection=='openai':
    openai_api_key = st.sidebar.text_input("Provide you OpenAI API Key",type='password')
    if openai_api_key:
       llm=ChatOpenAI(model='gpt-4o',api_key=openai_api_key)
+   else:
+      st.warning("Provide OpenAI API Key")
 else:
    llm=ChatGroq(model='openai/gpt-oss-20b')
 @tool
@@ -52,8 +54,7 @@ for message in st.session_state.messages:
   with st.chat_message(message["role"]):
     st.markdown(message["content"])
 
-if model_selection=='groq' or (model_selection=='openai' and openai_api_key):
-   prompt = st.chat_input("Say something...")
+prompt = st.chat_input("Say something...")
 
 # Action triggered on submit
 if prompt and (model_selection=='groq' or (model_selection=='openai' and openai_api_key)):
@@ -71,3 +72,5 @@ if prompt and (model_selection=='groq' or (model_selection=='openai' and openai_
   )
   with st.chat_message("assistant"):
     st.markdown(response_text)
+else:
+   st.warning("Select Model or Peovide Kwy")
