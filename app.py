@@ -55,7 +55,7 @@ for message in st.session_state.messages:
 prompt = st.chat_input("Say something...")
 
 # Action triggered on submit
-if prompt:
+if prompt and (model_selection=='groq' or (model_selection=='openai' and openai_api_key)):
   # 1. Save and display the user's message
   st.session_state.messages.append({"role": "user", "content": prompt})
   with st.chat_message("user"):
