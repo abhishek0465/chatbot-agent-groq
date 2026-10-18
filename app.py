@@ -64,7 +64,10 @@ if prompt and (model_selection=='groq' or (model_selection=='openai' and openai_
     st.markdown(prompt)
 
   # 2. Run an action for the assistant response
-  response_text = generate_response(prompt)
+   try:
+      response_text = generate_response(prompt)
+   except DDGSException:
+      response_text = "Sorry, unable to find answer due to my limited capabity, ask something else"
 
   # 3. Save and display the assistant's message
   st.session_state.messages.append(
