@@ -16,7 +16,7 @@ st.sidebar.title("My First AI-Agent")
 st.sidebar.subheader("Use it for Wiki Search, Google Search or Simple Calculations.")
 model_selection = st.sidebar.selectbox("Select Your Model",['openai','groq'])
 if model_selection=='openai':
-   openai_api_key = st.sidebar.text_input("Provide you OpenAI API Key",type='password')
+   openai_api_key = st.sidebar.text_input("Provide your OpenAI API Key",type='password')
    if openai_api_key:
       llm=ChatOpenAI(model='gpt-4o',api_key=openai_api_key)
    else:
