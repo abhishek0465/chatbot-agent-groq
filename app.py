@@ -64,9 +64,9 @@ if prompt and (model_selection=='groq' or (model_selection=='openai' and openai_
     st.markdown(prompt)
   try:
      response_text = generate_response(prompt)
-  except DDGSException:
+  except DDGSException as e1:
      response_text = "Sorry, unable to find answer due to my limited capabity, ask something else"
-  except NameError:
+  except NameError as e2:
      response_text = "Sorry, unable to find answer due to my limited capabity, ask something else"
 
   # 3. Save and display the assistant's message
