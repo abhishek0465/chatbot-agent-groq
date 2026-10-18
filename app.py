@@ -20,7 +20,7 @@ if model_selection=='openai':
    if openai_api_key:
       llm=ChatOpenAI(model='gpt-4o',api_key=openai_api_key)
    else:
-      st.warning("Provide OpenAI API Key")
+      st.sidebar.warning("Provide OpenAI API Key")
 else:
    llm=ChatGroq(model='openai/gpt-oss-20b')
 @tool
@@ -72,5 +72,3 @@ if prompt and (model_selection=='groq' or (model_selection=='openai' and openai_
   )
   with st.chat_message("assistant"):
     st.markdown(response_text)
-else:
-   st.warning("Select Model or Peovide Kwy")
